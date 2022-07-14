@@ -1,26 +1,43 @@
-const name = document.getElementById('name');
-const email = document.getElementById('email');
-const nationality = document.getElementById('nationality');
-const form = document.getElementById('form');
-const errorElement = document.getElementById('error');
-
-form.addEventListener('submit', (e) =>  {
-    let messages = [];
-    if (phone.value.length != 10){
-        messages.push('Phone number should be 10 digits long');
+function validation()
+{
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const nationality = document.getElementById('country');
+    const form = document.getElementById('form');
+    const day1 = document.getElementById('day1');
+    const day2 = document.getElementById('day2');
+    const day3 = document.getElementById('day3');
+    
+    if(!name.value)
+    {
+        alert('Please enter your name')
+        name.focus();
     }
 
-    if (occupation.value === 'Select Option'){
-        messages.push('Select Option (Student/Professional)');
+    if (phone.value.length != 10 )
+    {
+        alert('Phone number should be 10 digits long');
+        phone.focus();
+        return false;
     }
 
-    if (country.value === 'Select Country'){
-        messages.push('Select Nationality');
+    if (nationality.value == '0'){
+        alert('Select Country');
+        nationality.focus();
+        return false;
     }
 
-    if (messages.length > 0) {
-        e.preventDefault();
-        errorElement.innerText = messages.join(', ');
+    if (occupation.value == '0'){
+        alert('Select an option(Student/Professional)');
+        occupation.focus();
+        return false;
     }
+
+    if(!day1.checked && !day2.checked && !day3.checked)
+{
+    alert('Select at least 1 day');
+    return false;
 }
-)
+    
+    return true;
+}
